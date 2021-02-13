@@ -1,0 +1,7 @@
+{
+  "name": "react-ionic-sqlite",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
