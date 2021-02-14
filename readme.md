@@ -9,6 +9,7 @@
 - Part Two: https://youtu.be/5cWn8y3z7c4
 
 #ionic #react #sqlite
+
 **Part One:** Trying to get started with reactjs application using sqlite deployed to the mobile device. We cover database initialization, setup of loading content from JSON file, query for all items, and query for a specific item. This is all done on IOS device, android is similar but there are a few issues documented in the plugin documentation.
 
 **Part Two:** In this second part, we switch over to android to demonstrate the cross-platform capability of ionic framework capacitor and add the functionality for editing, deleting, and creating new contacts to add to the sqlite database. This shows the benefit of capacitor as standalone solution separate from ionic for creating mobile solutions using only reactjs
