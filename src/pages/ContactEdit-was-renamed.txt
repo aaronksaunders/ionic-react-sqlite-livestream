@@ -1,0 +1,91 @@
+import React, { useEffect, useState } from "react";
+
+import {
+  IonBackButton,
+  IonButton,
+  IonButtons,
+  IonContent,
+  IonHeader,
+  IonInput,
+  IonItem,
+  IonLabel,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+} from "@ionic/react";
+import "./Home.css";
+import { useParams, useHistory } from "react-router";
+import { getContactById, updateContact } from "../dataservice";
+
+const ContactEdit: React.FC<any> = () => {
+  const { id } = useParams<any>();
+  const history = useHistory();
+  const [currentContact, setCurrentContact] = useState<any>(null);
+
+  const [email, setEmail] = useState<any>(null);
+  const [first_name, setFirstName] = useState<any>(null);
+  const [last_name, setLastName] = useState<any>(null);
+
+  useEffect(() => {
+    getContactById(id).then((c: any) => {
+      setCurrentContact(c.values[0]);
+      setEmail(c.values[0].email);
+      setFirstName(c.values[0].first_name);
+      setLastName(c.values[0].last_name);
+    });
+  }, [id]);
+
+  /**
+   * 
+   */
+  const saveContact = async () => {
+    await updateContact(email,first_name, last_name, id);
+    // not doing a query since we are reloading in home pahe
+    history.goBack();
+  };
+
+  return (
+    <IonPage>
+      <IonHeader>
+        <IonToolbar>
+          <IonButtons slot="start">
+            <IonBackButton />
+          </IonButtons>
+          <IonTitle>IONIC REACT SQLITE: EDIT({id})</IonTitle>
+        </IonToolbar>
+      </IonHeader>
+      <IonContent fullscreen className="ion-padding">
+        <IonItem>
+          <IonLabel>First</IonLabel>
+          <IonInput
+            type="text"
+            value={first_name}
+            onIonChange={(e: any) => setFirstName(e.target.value)}
+          ></IonInput>
+        </IonItem>
+        <IonItem>
+          <IonLabel>Last</IonLabel>
+          <IonInput
+            type="text"
+            value={last_name}
+            onIonChange={(e: any) => setLastName(e.target.value)}
+          ></IonInput>
+        </IonItem>
+        <IonItem>
+          <IonLabel>Email</IonLabel>
+          <IonInput
+            type="email"
+            value={email}
+            onIonChange={(e: any) => setEmail(e.target.value)}
+          ></IonInput>
+        </IonItem>
+        <p>{currentContact?.last_modified}</p>
+        <div style={{ padding: 8 }}>
+          <IonButton onClick={() => saveContact()}>SAVE CONTACT</IonButton>
+        </div>
+      </IonContent>
+    </IonPage>
+  );
+};
+
+export default ContactEdit;

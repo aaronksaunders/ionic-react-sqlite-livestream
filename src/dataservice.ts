@@ -1,5 +1,5 @@
 // SQLITE IMPORTS
-import { Plugins, Capacitor } from "@capacitor/core";
+import { Plugins } from "@capacitor/core";
 import { SQLiteConnection } from "@capacitor-community/sqlite";
 
 // JSON FILE WITH DATA
@@ -51,11 +51,45 @@ export const queryAllContacts = async () => {
 };
 
 /**
- * 
- * @param contactId 
+ *
+ * @param contactId
  */
 export const getContactById = async (contactId: any) => {
   return await database.query("SELECT * FROM contacts WHERE id = ?;", [
     contactId + "",
   ]);
+};
+
+/**
+ *
+ * @param contactId
+ */
+export const deleteContactById = async (contactId: any) => {
+  return await database.query("DELETE FROM contacts WHERE id = ?;", [
+    contactId + "",
+  ]);
+};
+
+/**
+ *
+ * @param contactId
+ */
+export const updateContactById = async (contactId: any, contactData: any) => {
+  const { first_name, last_name, email } = contactData;
+  return await database.query(
+    "UPDATE contacts SET first_name=?, last_name=?, email=? WHERE id = ?;",
+    [first_name, last_name, email, contactId + ""]
+  );
+};
+
+/**
+ *
+ * @param contactData
+ */
+export const createContact = async (contactData: any) => {
+  const { first_name, last_name, email } = contactData;
+  return await database.run(
+    "INSERT INTO contacts (first_name,last_name,email) VALUES(?,?,?)",
+    [first_name, last_name, email]
+  );
 };

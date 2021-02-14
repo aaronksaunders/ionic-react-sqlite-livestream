@@ -2,7 +2,8 @@ import {
   IonCardContent,
   IonCard,
   IonCardHeader,
-  IonCardSubtitle
+  IonCardSubtitle,
+  IonButton,
 } from "@ionic/react";
 import React from "react";
 
@@ -10,7 +11,7 @@ import React from "react";
  *
  * @param param0
  */
-export const CurrentContact: React.FC<any> = ({ contact }) => {
+export const CurrentContact: React.FC<any> = ({ contact, onDelete, onEdit }) => {
   return (
     <div>
       {contact?.values[0] && (
@@ -26,6 +27,22 @@ export const CurrentContact: React.FC<any> = ({ contact }) => {
             </div>
             {contact?.values[0].email} - {contact?.values[0].id}
           </IonCardContent>
+          <IonButton
+            size="small"
+            style={{ margin: 8 }}
+            onClick={() => onEdit(contact?.values[0].id)}
+          >
+            EDIT
+          </IonButton>
+          <IonButton
+            size="small"
+            color="danger"
+            style={{ margin: 8 }}
+            onClick={() => onDelete(contact?.values[0].id)}
+          >
+            DELETE
+          </IonButton>
+
         </IonCard>
       )}
     </div>

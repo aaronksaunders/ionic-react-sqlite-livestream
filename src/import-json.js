@@ -18,7 +18,7 @@ const dataToImport = {
           value: "INTEGER DEFAULT (strftime('%s', 'now'))",
         },
       ],
-      indexes: [{ name: "index_user_on_email", column: "email" }],
+      // indexes: [{ name: "index_user_on_email", column: "email" }],
       values: [
         [1, "whiteleys@mail.com", "Whiteley", "Smith", now],
         [2, "johnj@mail.com", "John", "jones", now],
