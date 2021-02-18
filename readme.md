@@ -1,6 +1,7 @@
 # IONIC REACT JS: How To Use SQLite Capacitor Plugin In Ionic React Applications
 ![](https://github.com/aaronksaunders/ionic-react-sqlite-livestream/blob/main/Learn%20to%20Build%20Mobile%20Apps%20With%20Ionic%20Framework%2C%20VUEJS%2C%20and%20Capacitor%20(15).png)
 
+VUE SQLITE COURSE UDEMY - https://www.udemy.com/course/ionic-framework-with-vuejs-build-a-crud-app-using-sqlite/?referralCode=FDD5FD30775C82B6C8A0
 
 ### FROM VIDEO DESCRIPTION
 
